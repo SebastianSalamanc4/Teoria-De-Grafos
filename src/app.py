@@ -5,9 +5,9 @@ from pathlib import Path
 
 import pandas as pd
 import streamlit as st
-import folium
+import folium # para mapas interactivos
 from streamlit_folium import st_folium
-import plotly.express as px
+import plotly.express as px # para gráficos interactivos
 import plotly.graph_objects as go
 
 from tsp.instances import (
@@ -24,6 +24,7 @@ from tsp.heuristics import vecino_mas_cercano
 
 
 # Variables resultantes:
+
 # π* --> ruta_optima
 # L* --> dist_optima
 # π^NN --> ruta_nn
@@ -38,11 +39,6 @@ st.set_page_config(
     page_icon="🗺️",
     initial_sidebar_state="expanded"
 )
-
-# ---------------------------------------------------------
-# ESTILOS CSS PERSONALIZADOS
-# ---------------------------------------------------------
-
 
 
 # ---------------------------------------------------------
@@ -297,7 +293,7 @@ def main():
             st.error("No se pudo cargar la instancia. Verifica que el archivo exista en la carpeta data/")
             return
             
-        asignar_matriz_a_instancia(instancia)
+        asignar_matriz_a_instancia(instancia) # asignar matriz de distancias
         
         ciudad_inicio = st.selectbox(
             "Ciudad de inicio:",

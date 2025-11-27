@@ -14,9 +14,9 @@ from .instances import (
 # (distancia aproximada por grado de latitud/longitud)
 # ---------------------------------------------------------
 
-KILOMETROS_POR_GRADO_LAT: float = 111.32           # ~ km por grado de latitud
-LATITUD_MEDIA: float = -38.5                       # latitud promedio (por ejemplo, Araucanía)
-KILOMETROS_POR_GRADO_LON: float = KILOMETROS_POR_GRADO_LAT * math.cos(
+KILOMETROS_POR_GRADO_LAT: float = 111.32           # ~ km por grado de latitud, 111.32 km por que es el valor promedio mundial
+LATITUD_MEDIA: float = -38.5                       # latitud promedio (por ejemplo, Araucanía), -38.5 grados porque Chile está en el hemisferio sur
+KILOMETROS_POR_GRADO_LON: float = KILOMETROS_POR_GRADO_LAT * math.cos( 
     math.radians(LATITUD_MEDIA)
 )
 
@@ -41,8 +41,8 @@ def distancia_aproximada_km(
     Calcula una distancia aproximada en kilómetros entre dos puntos
     dados por (lat, lon) usando una aproximación local.
     """
-    dlat = (lat2 - lat1) * KILOMETROS_POR_GRADO_LAT
-    dlon = (lon2 - lon1) * KILOMETROS_POR_GRADO_LON
+    dlat = (lat2 - lat1) * KILOMETROS_POR_GRADO_LAT  # conversión a km de latitud
+    dlon = (lon2 - lon1) * KILOMETROS_POR_GRADO_LON  # conversión a km de longitud
     return math.sqrt(dlat**2 + dlon**2)
 
 
@@ -92,6 +92,7 @@ def construir_matriz_distancias(
     return matriz
 
 
+
 def asignar_matriz_a_instancia(
     instancia: InstanciaTSP,
     en_kilometros: bool = True,
@@ -121,3 +122,4 @@ def distancia_entre_ciudades(
     a partir de la matriz de distancias.
     """
     return float(matriz.loc[ciudad_origen, ciudad_destino])
+

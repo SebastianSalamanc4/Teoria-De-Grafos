@@ -34,11 +34,11 @@ def vecino_mas_cercano(
     elif ciudad_inicio not in ciudades:
         raise ValueError(f"La ciudad de inicio '{ciudad_inicio}' no está en la matriz.")
 
-    no_visitadas = set(ciudades)
+    no_visitadas = set(ciudades) # conjunto de ciudades no visitadas
     no_visitadas.remove(ciudad_inicio)
 
-    ruta: List[NombreCiudad] = [ciudad_inicio]
-    ciudad_actual: NombreCiudad = ciudad_inicio
+    ruta: List[NombreCiudad] = [ciudad_inicio] # lista ruta donde se guardan las ciudades en orden
+    ciudad_actual: NombreCiudad = ciudad_inicio # ciudad donde estamos actualmente
 
     # Construcción greedy de la ruta
     while no_visitadas:

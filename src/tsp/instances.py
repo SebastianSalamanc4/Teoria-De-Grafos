@@ -15,7 +15,7 @@ ListaCiudades = List[NombreCiudad]              # lista de nombres de ciudades
 
 
 @dataclass
-class InstanciaTSP:
+class InstanciaTSP: # instanciaSP es una clase de datos que representa una instancia del problema del viajante de comercio
     ciudades: ListaCiudades                    # lista de nombres de ciudades
     coordenadas: CoordenadasCiudades          # ciudad -> (lat, lon)
     matriz_distancias: MatrizDistancias | None = None  # matriz de distancias (opcional)
@@ -30,7 +30,7 @@ class InstanciaTSP:
             f"matriz_lista={'Sí' if self.matriz_distancias is not None else 'No'})"
         )
 
-# carfgar ciudades y coordenadas desde un archivo CSV
+# cargar ciudades y coordenadas desde un archivo CSV
 def cargar_ciudades_desde_csv(ruta: str) -> InstanciaTSP:
     df = pd.read_csv(ruta)
 
@@ -64,3 +64,4 @@ def crear_instancia_desde_dataframe(df: pd.DataFrame) -> InstanciaTSP:
     }
 
     return InstanciaTSP(ciudades=ciudades, coordenadas=coordenadas)
+
