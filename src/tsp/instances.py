@@ -8,7 +8,7 @@ import pandas as pd                 # para manejar dataframes
 
 NombreCiudad = str                              # alias para el tipo nombre de ciudad
 Coordenada = Tuple[float, float]                # (latitud, longitud)
-CoordenadasCiudades = Dict[NombreCiudad, Coordenada]  # ciudad -> (lat, lon)
+CoordenadasCiudades = Dict[NombreCiudad, Coordenada]  # ciudad -> (lat, lon)     ; diccionario "temuco" :(23132 ,3213213)
 
 MatrizDistancias = pd.DataFrame                 # DataFrame para la matriz de distancias
 ListaCiudades = List[NombreCiudad]              # lista de nombres de ciudades
@@ -29,7 +29,7 @@ class InstanciaTSP:
             f"num_ciudades={len(self.ciudades)}, "
             f"matriz_lista={'Sí' if self.matriz_distancias is not None else 'No'})"
         )
-
+      #instancia = InstanciaTSP(...)    print(instacia)
 # carfgar ciudades y coordenadas desde un archivo CSV
 def cargar_ciudades_desde_csv(ruta: str) -> InstanciaTSP:
     df = pd.read_csv(ruta)
