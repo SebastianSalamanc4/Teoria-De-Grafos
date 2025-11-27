@@ -21,6 +21,15 @@ from tsp.heuristics import vecino_mas_cercano
 
 # ---------------------------------------------------------
 # CONFIGURACIÓN BÁSICA DE LA PÁGINA
+
+
+# Variables resultantes:
+# π* --> ruta_optima
+# L* --> dist_optima
+# π^NN --> ruta_nn
+# L^NN --> dist_nn
+            
+
 # ---------------------------------------------------------
 
 st.set_page_config(
@@ -331,15 +340,6 @@ def main():
         # Inicializar variables
         ruta_optima, dist_optima, tiempo_optimo = None, None, None
         ruta_nn, dist_nn, tiempo_nn = None, None, None
-
-        """
-        Variables resultantes:
-         π* --> ruta_optima
-         L* --> dist_optima
-         π^NN --> ruta_nn
-         L^NN --> dist_nn
-            
-        """
         
         # Ejecutar algoritmos según selección
         if metodo in ["Exhaustivo", "Comparar ambos"]:
