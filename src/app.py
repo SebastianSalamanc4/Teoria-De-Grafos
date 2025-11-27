@@ -331,20 +331,29 @@ def main():
         # Inicializar variables
         ruta_optima, dist_optima, tiempo_optimo = None, None, None
         ruta_nn, dist_nn, tiempo_nn = None, None, None
+
+        """
+        Variables resultantes:
+         π* --> ruta_optima
+         L* --> dist_optima
+         π^NN --> ruta_nn
+         L^NN --> dist_nn
+            
+        """
         
         # Ejecutar algoritmos según selección
         if metodo in ["Exhaustivo", "Comparar ambos"]:
             try:
-                t0 = time.perf_counter()
-                ruta_optima, dist_optima = resolver_exhaustivo(instancia.matriz_distancias, ciudad_inicio)
-                tiempo_optimo = time.perf_counter() - t0
+                t0 = time.perf_counter() # Inicio temporizador
+                ruta_optima, dist_optima = resolver_exhaustivo(instancia.matriz_distancias, ciudad_inicio)  # # Método exhaustivo (π* y L*)
+                tiempo_optimo = time.perf_counter() - t0 # Fin temporizador 
             except Exception as e:
                 st.error(f"Error en método exhaustivo: {e}")
         
         if metodo in ["Vecino Más Cercano", "Comparar ambos"]:
             try:
                 t0 = time.perf_counter()
-                ruta_nn, dist_nn = vecino_mas_cercano(instancia.matriz_distancias, ciudad_inicio)
+                ruta_nn, dist_nn = vecino_mas_cercano(instancia.matriz_distancias, ciudad_inicio) # # Heurística Vecino Más Cercano (π^NN y L^NN)
                 tiempo_nn = time.perf_counter() - t0
             except Exception as e:
                 st.error(f"Error en método vecino más cercano: {e}")
@@ -352,7 +361,7 @@ def main():
         # Calcular gap si es necesario
         gap = None
         if ruta_optima and ruta_nn and dist_optima > 0:
-            gap = ((dist_nn - dist_optima) / dist_optima) * 100.0
+            gap = ((dist_nn - dist_optima) / dist_optima) * 100.0 # gap = ((L^NN - L*) / L*) * 100%
     
     # Mostrar estado de cálculo
     st.markdown("""

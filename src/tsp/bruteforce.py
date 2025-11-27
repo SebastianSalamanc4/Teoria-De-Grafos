@@ -1,4 +1,3 @@
-# src/tsp/bruteforce.py
 
 from __future__ import annotations
 import itertools
@@ -74,7 +73,7 @@ def resolver_exhaustivo(
     ciudad_inicio: NombreCiudad | None = None
 ) -> Tuple[List[NombreCiudad], float]:
     """
-    Basicmente: Recorre todas las rutas → busca el mínimo → retorna mejor ruta y distancia.
+    Basicamente: Recorre todas las rutas → busca el mínimo → retorna mejor ruta y distancia.
 
     Resuelve el TSP usando búsqueda exhaustiva.
 
