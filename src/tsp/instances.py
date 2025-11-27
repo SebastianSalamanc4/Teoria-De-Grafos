@@ -2,7 +2,7 @@
 
 from __future__ import annotations  # permite usar la clase en anotaciones de tipo
 from dataclasses import dataclass   # para definir clases de datos
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple # para anotaciones de tipo
 import pandas as pd                 # para manejar dataframes
 
 
@@ -50,6 +50,7 @@ def cargar_ciudades_desde_csv(ruta: str) -> InstanciaTSP:
 
 
 # crear instancia desde un DataFrame
+# el dataframe es similar al cargado desde CSV pero ya está en memoria y no se lee desde un archivo, entonces se usa esta función para crear la instancia directamente
 def crear_instancia_desde_dataframe(df: pd.DataFrame) -> InstanciaTSP:
     columnas_requeridas = {"Ciudad", "Latitud", "Longitud"}
     if not columnas_requeridas.issubset(df.columns):
